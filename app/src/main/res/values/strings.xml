@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Daftar Film</string>
+    <string name="detail_menu">Detail Film</string>
+
+    <string name="tab_title_1">Movies</string>
+    <string name="tab_title_2">TV Shows</string>
+
+    <string name="detail_text_title">Title: </string>
+    <string name="detail_text_description">Description: </string>
+    <string name="detail_text_film_type">Film Category: </string>
+
+</resources>

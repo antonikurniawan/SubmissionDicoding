@@ -1,0 +1,25 @@
+Skenario Testing:
+Unit Testing:
+----------------
++ DetailFilmViewModelTest:
+- Memastikan data tidak null dalam halaman detail ketika mengambil data pada Movie atau TvSeries
+- Memastikan halaman detail akan menampilkan nilai "None" jika data yang dicari tidak ditemukan
+
++ MovieViewModelTest:
+- Memastikan data Movie tidak null
+- Memastikan jumlah data Movie sesuai dengan yang diharapkan.
+
++ TvSeriesViewModelTest:
+- Memastikan data TvSeries tidak null
+- Memastikan jumlah data TvSeries sesuai dengan yang diharapkan.
+
+Instrumentation Testing:
+--------------------------
+Main Activity Test:
++ Menampilkan data Movies dan TV Shows
+- Memastikan recycle_view_movies pada Movies dan recycle_view_tv_series TV Shows tampil
+- Scroll/gulir recycle_view_movies dan recycle_view_tv_series ke posisi data paling akhir
+
++ Menampilkan data detail pada Movies dan TV Shows
+- Melakukan aksi klik pada baris data pertama pada recycle_view_movies di Movies dan recycle_view_tv_series di TV Shows
+- Memastikan TextView pada detail yaitu txt_film_title, txt_film_type, txt_film_description pada DetailFilmActivity ketika menggunakan data pada Movies atau TV Shows untuk tampil dan sesuai dengan data yang diharapkan
