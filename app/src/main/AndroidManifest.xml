@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dicoding.picodiploma.jetpacksubmissiondua">
+
     <!-- Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackSubmissionSatu">
 
-        <activity android:name="com.dicoding.picodiploma.jetpacksubmissiondua.SplashScreenActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <activity android:name="com.dicoding.picodiploma.jetpacksubmissiondua.main.SplashScreenActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,10 +23,10 @@
         </activity>
 
         <activity
-            android:name="com.dicoding.picodiploma.jetpacksubmissiondua.DetailFilmActivity"
+            android:name="com.dicoding.picodiploma.jetpacksubmissiondua.detail.DetailFilmActivity"
             android:label="@string/detail_menu" />
 
-        <activity android:name="com.dicoding.picodiploma.jetpacksubmissiondua.MainActivity"/>
+        <activity android:name="com.dicoding.picodiploma.jetpacksubmissiondua.main.MainActivity"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.jetpacksubmissiondua
+package com.dicoding.picodiploma.jetpacksubmissiondua.data.source.local.entity
 
 
 data class Film(

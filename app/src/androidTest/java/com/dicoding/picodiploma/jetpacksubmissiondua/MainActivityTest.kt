@@ -1,13 +1,18 @@
 package com.dicoding.picodiploma.jetpacksubmissiondua
 
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.rules.ActivityScenarioRule
-import org.junit.Rule
+import com.dicoding.picodiploma.jetpacksubmissiondua.main.MainActivity
+import com.dicoding.picodiploma.jetpacksubmissiondua.utils.DataDummy
+import com.dicoding.picodiploma.jetpacksubmissiondua.utils.EspressoIdlingResource
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
 
 class MainActivityTest {
@@ -15,8 +20,17 @@ class MainActivityTest {
     private val dummyMovie = DataDummy.generateDummyMovie()
     private val dummyTvSeries = DataDummy.generateDummyTvSeries()
 
-    @get: Rule
-    var activityRule = ActivityScenarioRule(MainActivity::class.java)
+
+    @Before
+    fun setup(){
+        ActivityScenario.launch(MainActivity::class.java)
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.idlingResource)
+    }
+
+    @After
+    fun tearDown(){
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.idlingResource)
+    }
 
     //Movies Test
     @Test
@@ -62,4 +76,5 @@ class MainActivityTest {
         onView(withId(R.id.txt_film_description)).check(matches(isDisplayed()))
         onView(withId(R.id.txt_film_description)).check(matches(withText(dummyTvSeries[0].filmDescription)))
     }
+
 }

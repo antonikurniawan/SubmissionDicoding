@@ -1,9 +1,10 @@
-package com.dicoding.picodiploma.jetpacksubmissiondua
+package com.dicoding.picodiploma.jetpacksubmissiondua.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.viewpager2.widget.ViewPager2
+import com.dicoding.picodiploma.jetpacksubmissiondua.R
 import com.dicoding.picodiploma.jetpacksubmissiondua.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -15,8 +16,8 @@ class MainActivity : AppCompatActivity() {
     companion object {
         @StringRes
         private val TAB_TITLES = intArrayOf(
-            R.string.tab_title_1,
-            R.string.tab_title_2
+                R.string.tab_title_1,
+                R.string.tab_title_2
         )
     }
 

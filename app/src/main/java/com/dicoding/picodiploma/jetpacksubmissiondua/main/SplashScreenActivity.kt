@@ -1,8 +1,9 @@
-package com.dicoding.picodiploma.jetpacksubmissiondua
+package com.dicoding.picodiploma.jetpacksubmissiondua.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dicoding.picodiploma.jetpacksubmissiondua.R
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -17,6 +18,5 @@ class SplashScreenActivity : AppCompatActivity() {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }
-
     }
 }

@@ -1,69 +1,102 @@
 package com.dicoding.picodiploma.jetpacksubmissiondua
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import com.dicoding.picodiploma.jetpacksubmissiondua.data.FilmRepository
+import com.dicoding.picodiploma.jetpacksubmissiondua.data.source.local.entity.Film
+import com.dicoding.picodiploma.jetpacksubmissiondua.detail.DetailFilmViewModel
+import com.dicoding.picodiploma.jetpacksubmissiondua.utils.DataDummy
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.verify
+import org.mockito.junit.MockitoJUnitRunner
 
+
+@RunWith(MockitoJUnitRunner::class)
 class DetailFilmViewModelTest {
 
-    private lateinit var viewModelForMovie: DetailFilmViewModel
-    private lateinit var viewModelForTvSeries: DetailFilmViewModel
-
-
+    //movie
+    private lateinit var viewModeForMovie: DetailFilmViewModel
     private val dummyMovie = DataDummy.generateDummyMovie()[0]
     private val movieName = dummyMovie.filmName
-    private val movieType = dummyMovie.filmType
 
-    private val dummyTvSeries = DataDummy.generateDummyTvSeries()[0]
-    private val tvSeriesName = dummyTvSeries.filmName
-    private val tvSeriesType = dummyTvSeries.filmType
+    //tv series
+    private lateinit var viewModelForTvSeries: DetailFilmViewModel
+    private val dummyTv = DataDummy.generateDummyTvSeries()[0]
+    private val tvSeriesName = dummyTv.filmName
+
+    @get:Rule
+    var instantTaskExecutorRule = InstantTaskExecutorRule()
+
+    @Mock
+    private lateinit var filmRepository: FilmRepository
+
+    @Mock
+    private lateinit var movieObserver: Observer<Film>
+
+    @Mock
+    private lateinit var tvSeriesObserver: Observer<Film>
+
 
     @Before
     fun setUp(){
-        viewModelForMovie = DetailFilmViewModel()
-        viewModelForMovie.setSelectedFilm(movieName, movieType)
+        //movie
+        viewModeForMovie = DetailFilmViewModel(filmRepository)
+        viewModeForMovie.setSelectedFilm(movieName)
 
-        viewModelForTvSeries = DetailFilmViewModel()
-        viewModelForTvSeries.setSelectedFilm(tvSeriesName, tvSeriesType)
+        //tv series
+        viewModelForTvSeries = DetailFilmViewModel(filmRepository)
+        viewModelForTvSeries.setSelectedFilm(tvSeriesName)
     }
 
 
     @Test
     fun testGetFilmDataIfMovie() {
-        viewModelForMovie.setSelectedFilm(dummyMovie.filmName, dummyMovie.filmType)
-        val movieEntity = viewModelForMovie.getFilmData()
+        val movie = MutableLiveData<Film>()
+        movie.value = dummyMovie
 
-        assertNotNull(movieEntity)
-        assertEquals(dummyMovie.filmName, movieEntity.filmName)
-        assertEquals(dummyMovie.filmType, movieEntity.filmType)
-        assertEquals(dummyMovie.filmImage, movieEntity.filmImage)
-        assertEquals(dummyMovie.filmDescription, movieEntity.filmDescription)
+        `when`(filmRepository.getMoviesWithName(movieName)).thenReturn(movie)
+        val filmMovie = viewModeForMovie.getMovie().value as Film
+        verify(filmRepository).getMoviesWithName(movieName)
+
+        assertNotNull(filmMovie)
+
+        assertEquals(dummyMovie.filmImage, filmMovie.filmImage)
+        assertEquals(dummyMovie.filmName, filmMovie.filmName)
+        assertEquals(dummyMovie.filmDescription, filmMovie.filmDescription)
+        assertEquals(dummyMovie.filmType, filmMovie.filmType)
+
+        viewModeForMovie.getMovie().observeForever(movieObserver)
+        verify(movieObserver).onChanged(dummyMovie)
     }
+
 
     @Test
     fun testGetFilmDataIfTvSeries() {
-        viewModelForTvSeries.setSelectedFilm(dummyTvSeries.filmName, dummyTvSeries.filmType)
-        val tvSeriesEntity = viewModelForTvSeries.getFilmData()
 
-        assertNotNull(tvSeriesEntity)
-        assertEquals(dummyTvSeries.filmName, tvSeriesEntity.filmName)
-        assertEquals(dummyTvSeries.filmType, tvSeriesEntity.filmType)
-        assertEquals(dummyTvSeries.filmImage, tvSeriesEntity.filmImage)
-        assertEquals(dummyTvSeries.filmDescription, tvSeriesEntity.filmDescription)
+        val tvSeries = MutableLiveData<Film>()
+        tvSeries.value = dummyTv
 
+        `when`(filmRepository.getTvWithName(tvSeriesName)).thenReturn(tvSeries)
+        val filmTvSeries = viewModelForTvSeries.getTv().value as Film
+        verify(filmRepository).getTvWithName(tvSeriesName)
+
+        assertNotNull(filmTvSeries)
+
+        assertEquals(dummyTv.filmImage, filmTvSeries.filmImage)
+        assertEquals(dummyTv.filmName, filmTvSeries.filmName)
+        assertEquals(dummyTv.filmDescription, filmTvSeries.filmDescription)
+        assertEquals(dummyTv.filmType, filmTvSeries.filmType)
+
+        viewModelForTvSeries.getTv().observeForever(tvSeriesObserver)
+        verify(tvSeriesObserver).onChanged(dummyTv)
     }
 
-    @Test
-    fun testGetFilmDataIfNotFound(){
-        val emptyViewModel = DetailFilmViewModel()
-        emptyViewModel.setSelectedFilm("dummy name", "dummy type")
-        val dummyEntity = emptyViewModel.getFilmData()
-
-        //when no data found, get film will return "None" value instead of null
-        assertEquals("None", dummyEntity.filmName)
-        assertEquals("None", dummyEntity.filmType)
-        assertEquals("None", dummyEntity.filmImage)
-        assertEquals("None", dummyEntity.filmDescription)
-    }
 }

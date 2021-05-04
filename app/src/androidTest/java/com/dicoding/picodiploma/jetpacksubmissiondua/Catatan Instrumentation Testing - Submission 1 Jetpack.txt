@@ -2,16 +2,27 @@ Skenario Testing:
 Unit Testing:
 ----------------
 + DetailFilmViewModelTest:
-- Memastikan data tidak null dalam halaman detail ketika mengambil data pada Movie atau TvSeries
-- Memastikan halaman detail akan menampilkan nilai "None" jika data yang dicari tidak ditemukan
+- Memanipulasi data ketika pemanggilan data movie atau tv series di kelas film repository.
+- Memastikan metode dari kelas film repository terpanggil.
+- Memastikan data tidak null dalam halaman detail ketika mengambil data pada Movie atau TvSeries.
+- Membandingkan data movie atau tv series sudah sesuai dengan yang diharapkan atau belum.
 
 + MovieViewModelTest:
-- Memastikan data Movie tidak null
+- Memanipulasi data ketika pemanggilan data movie di kelas film repository.
+- Memastikan metode dari kelas film repository terpanggil.
+- Memastikan data Movie tidak null.
 - Memastikan jumlah data Movie sesuai dengan yang diharapkan.
 
 + TvSeriesViewModelTest:
-- Memastikan data TvSeries tidak null
+- Memanipulasi data ketika pemanggilan data tv series di kelas film repository.
+- Memastikan metode dari kelas film repository terpanggil.
+- Memastikan data TvSeries tidak null.
 - Memastikan jumlah data TvSeries sesuai dengan yang diharapkan.
+
++ FilmRepositoryTest
+- Memastikan metode dari kelas remote data source film terpanggil.
+- Memastikan data movie atau tv dipanggil oleh metode tersebut tidak null.
+- Memastikan data movie atau tv yang dipanggil sudah sesuai dengan yang diharapkan atau belum.
 
 Instrumentation Testing:
 --------------------------

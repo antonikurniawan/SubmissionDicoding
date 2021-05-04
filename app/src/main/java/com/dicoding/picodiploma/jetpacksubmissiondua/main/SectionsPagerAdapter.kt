@@ -1,8 +1,10 @@
-package com.dicoding.picodiploma.jetpacksubmissiondua
+package com.dicoding.picodiploma.jetpacksubmissiondua.main
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.dicoding.picodiploma.jetpacksubmissiondua.movie.ui.MovieFragment
+import com.dicoding.picodiploma.jetpacksubmissiondua.tv.ui.TvSeriesFragment
 
 class SectionsPagerAdapter (activity: AppCompatActivity) : FragmentStateAdapter(activity){
 
