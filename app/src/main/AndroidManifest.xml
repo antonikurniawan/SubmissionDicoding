@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dicoding.picodiploma.jetpacksubmissiondua">
-
+    package="com.dicoding.picodiploma.jetpacksubmissiontiga">
     <!-- Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -13,20 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackSubmissionSatu">
-
-        <activity android:name="com.dicoding.picodiploma.jetpacksubmissiondua.main.SplashScreenActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <activity android:name=".favorite.ActivityFavorite"
+            android:label="@string/favorite_menu"></activity>
+        <activity
+            android:name=".main.SplashScreenActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.dicoding.picodiploma.jetpacksubmissiondua.detail.DetailFilmActivity"
+            android:name=".detail.DetailFilmActivity"
             android:label="@string/detail_menu" />
-
-        <activity android:name="com.dicoding.picodiploma.jetpacksubmissiondua.main.MainActivity"/>
+        <activity android:name=".main.MainActivity" />
     </application>
 
 </manifest>
