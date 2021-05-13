@@ -5,6 +5,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -75,6 +76,47 @@ class MainActivityTest {
 
         onView(withId(R.id.txt_film_description)).check(matches(isDisplayed()))
         onView(withId(R.id.txt_film_description)).check(matches(withText(dummyTvSeries[0].filmDescription)))
+    }
+
+    //Favorite Test
+    @Test
+    fun loadFavoriteMovie(){
+        onView(withId(R.id.recycle_view_movies)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+
+        onView(withId(R.id.menu_favorite)).perform(click())
+        onView(isRoot()).perform(ViewActions.pressBack())
+
+        onView(withId(R.id.menu_favorite)).perform(click())
+
+        onView(withId(R.id.recycle_view_movies)).check(matches(isDisplayed()))
+        onView(withId(R.id.recycle_view_movies)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+
+        onView(withId(R.id.txt_film_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.txt_film_type)).check(matches(isDisplayed()))
+        onView(withId(R.id.txt_film_description)).check(matches(isDisplayed()))
+        onView(withId(R.id.menu_favorite)).perform(click())
+        onView(isRoot()).perform(ViewActions.pressBack())
+    }
+
+    @Test
+    fun loadFavoriteTvSeries(){
+        onView(withText("TV Shows")).perform(click())
+        onView(withId(R.id.recycle_view_tv_series)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+
+        onView(withId(R.id.menu_favorite)).perform(click())
+        onView(isRoot()).perform(ViewActions.pressBack())
+
+        onView(withId(R.id.menu_favorite)).perform(click())
+
+        onView(withId(R.id.btn_go_to_tv_favorite_list)).perform(click())
+        onView(withId(R.id.recycle_view_tv_series)).check(matches(isDisplayed()))
+        onView(withId(R.id.recycle_view_tv_series)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+
+        onView(withId(R.id.txt_film_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.txt_film_type)).check(matches(isDisplayed()))
+        onView(withId(R.id.txt_film_description)).check(matches(isDisplayed()))
+        onView(withId(R.id.menu_favorite)).perform(click())
+        onView(isRoot()).perform(ViewActions.pressBack())
     }
 
 }

@@ -85,12 +85,6 @@ class RemoteDataSourceFilm private constructor(private val jsonHelper: JsonHelpe
         return resultMovie
     }
 
-//    fun getMoviesByName(movieName: String): LiveData<ApiResponse<MovieResponse>> {
-//        EspressoIdlingResource.increment()
-//        val resultMovie = MutableLiveData<ApiResponse<MovieResponse>>()
-//
-//    }
-
 
     //tv
     fun getAllTv(): LiveData<ApiResponse<List<TvResponse>>>{
