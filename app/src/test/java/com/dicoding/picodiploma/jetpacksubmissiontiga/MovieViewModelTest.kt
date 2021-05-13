@@ -3,6 +3,7 @@ package com.dicoding.picodiploma.jetpacksubmissiontiga
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.paging.PagedList
 import com.dicoding.picodiploma.jetpacksubmissiontiga.data.FilmRepository
 import com.dicoding.picodiploma.jetpacksubmissiontiga.data.source.local.entity.Film
 import com.dicoding.picodiploma.jetpacksubmissiontiga.movie.ui.MovieViewModel
@@ -30,7 +31,7 @@ class MovieViewModelTest{
     private lateinit var filmRepository: FilmRepository
 
     @Mock
-    private lateinit var observer: Observer<List<Film>>
+    private lateinit var observer: Observer<PagedList<Film>>
 
     @Before
     fun setUp() {

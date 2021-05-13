@@ -9,7 +9,7 @@ import androidx.annotation.StringRes
 import androidx.viewpager2.widget.ViewPager2
 import com.dicoding.picodiploma.jetpacksubmissiontiga.R
 import com.dicoding.picodiploma.jetpacksubmissiontiga.databinding.ActivityMainBinding
-import com.dicoding.picodiploma.jetpacksubmissiontiga.favorite.ActivityFavorite
+import com.dicoding.picodiploma.jetpacksubmissiontiga.favorite.movie.ActivityFavoriteMovie
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menu_favorite){
-            startActivity(Intent(this, ActivityFavorite::class.java))
+            startActivity(Intent(this, ActivityFavoriteMovie::class.java))
         }
         return super.onOptionsItemSelected(item)
     }

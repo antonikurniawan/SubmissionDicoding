@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
+import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -91,10 +92,22 @@ class ListFilmAdapter: PagedListAdapter<Film, ListFilmAdapter.ListViewHolder>(DI
         }
     }
 
-    override fun submitList(pagedList: PagedList<Film>?) {
-        super.submitList(pagedList)
-        this.notifyDataSetChanged()
-    }
+//    private var pagedListFilm : PagedList<Film>? = null
+//    private var listSize: Int? = -1
+
+//    override fun submitList(pagedList: PagedList<Film>?) {
+////        this.pagedListFilm?.clear()
+////        this.pagedListFilm = LivePagedListBuilder()
+//        listSize = pagedList?.size?.toInt()
+//        super.submitList(null)
+//        super.submitList(pagedList)
+//        println("code 121: this is current list size: "+pagedList?.size.toString())
+//        this.notifyDataSetChanged()
+//
+//    }
+
+//    override fun getItemCount(): Int = listSize!!
+
 //    private val listFilm = ArrayList<Film>()
 
 
@@ -130,6 +143,7 @@ class ListFilmAdapter: PagedListAdapter<Film, ListFilmAdapter.ListViewHolder>(DI
                     intent.putExtra(DetailFilmActivity.EXTRA_DETAIL_FILM, film.filmName)
                     intent.putExtra(DetailFilmActivity.EXTRA_DETAIL_FILM_TYPE, film.filmType)
 
+
 //                    //get list size and film selected position
 //                    intent.putExtra(DetailFilmActivity.EXTRA_FILM_LIST_SIZE, listFilm.size.toString())
 //                    intent.putExtra(DetailFilmActivity.EXTRA_FILM_POSITION, bindingAdapterPosition.toString())
@@ -153,6 +167,6 @@ class ListFilmAdapter: PagedListAdapter<Film, ListFilmAdapter.ListViewHolder>(DI
         }
     }
 
-//    override fun getItemCount(): Int = listFilm.size
+
 
 }

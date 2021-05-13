@@ -11,8 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackSubmissionSatu">
-        <activity android:name=".favorite.ActivityFavorite"
-            android:label="@string/favorite_menu"></activity>
+        <activity android:name=".favorite.tv.ActivityFavoriteTv"
+            android:label="@string/favorite__tv_menu"/>
+        <activity
+            android:name=".favorite.movie.ActivityFavoriteMovie"
+            android:label="@string/favorite_movie_menu" />
         <activity
             android:name=".main.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">

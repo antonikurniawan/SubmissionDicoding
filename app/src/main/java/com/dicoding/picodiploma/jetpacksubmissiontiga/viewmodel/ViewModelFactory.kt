@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.dicoding.picodiploma.jetpacksubmissiontiga.data.FilmRepository
 import com.dicoding.picodiploma.jetpacksubmissiontiga.detail.DetailFilmViewModel
 import com.dicoding.picodiploma.jetpacksubmissiontiga.di.Injection
-import com.dicoding.picodiploma.jetpacksubmissiontiga.favorite.movie.MovieFragmentFavoriteViewModel
-import com.dicoding.picodiploma.jetpacksubmissiontiga.favorite.tv.TvSeriesFragmentFavoriteViewModel
+import com.dicoding.picodiploma.jetpacksubmissiontiga.favorite.movie.MovieFavoriteViewModel
+import com.dicoding.picodiploma.jetpacksubmissiontiga.favorite.tv.TvSeriesFavoriteViewModel
 import com.dicoding.picodiploma.jetpacksubmissiontiga.movie.ui.MovieViewModel
 import com.dicoding.picodiploma.jetpacksubmissiontiga.tv.ui.TvSeriesViewModel
 
@@ -40,12 +40,12 @@ class ViewModelFactory private constructor(private val mFilmRepository: FilmRepo
                 return DetailFilmViewModel(mFilmRepository) as T
             }
 
-            modelClass.isAssignableFrom(MovieFragmentFavoriteViewModel::class.java) -> {
-                return MovieFragmentFavoriteViewModel(mFilmRepository) as T
+            modelClass.isAssignableFrom(MovieFavoriteViewModel::class.java) -> {
+                return MovieFavoriteViewModel(mFilmRepository) as T
             }
 
-            modelClass.isAssignableFrom(TvSeriesFragmentFavoriteViewModel::class.java) -> {
-                return TvSeriesFragmentFavoriteViewModel(mFilmRepository) as T
+            modelClass.isAssignableFrom(TvSeriesFavoriteViewModel::class.java) -> {
+                return TvSeriesFavoriteViewModel(mFilmRepository) as T
             }
 
             else -> throw Throwable("Unknown Viewmodel Class: " + modelClass.name)

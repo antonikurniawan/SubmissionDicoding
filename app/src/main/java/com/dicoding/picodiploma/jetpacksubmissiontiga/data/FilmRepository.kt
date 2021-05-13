@@ -333,9 +333,9 @@ class FilmRepository private constructor(
     override fun setFavoriteMovie(movie: Film, state: Boolean) =
         appExecutors.diskIO().execute { localDataSource.setMovieFavorite(movie, state) }
 
-    override fun setFavoriteTv(tvSeries: Film, state: Boolean) {
+    override fun setFavoriteTv(tvSeries: Film, state: Boolean) =
         appExecutors.diskIO().execute { localDataSource.setTvSeriesFavorite(tvSeries, state)}
-    }
+
 
 
     //get favorite

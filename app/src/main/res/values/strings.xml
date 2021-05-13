@@ -2,6 +2,10 @@
     <!--  Menu Title  -->
     <string name="app_name">Daftar Film</string>
     <string name="detail_menu">Detail Film</string>
+    <string name="favorite_movie_menu">Favorite Movie List</string>
+    <string name="favorite__tv_menu">Favorite Tv Series List</string>
+
+    <!--  Menu Bar  -->
     <string name="favorite_menu">Favorite List</string>
 
     <!--  Tabs Title  -->
@@ -14,7 +18,10 @@
     <string name="detail_text_film_type">Film Category: </string>
 
     <!--  Button Name  -->
-    <string name="button_next">Next</string>
-    <string name="button_previous">Previous</string>
+<!--    <string name="button_next">Next</string>-->
+<!--    <string name="button_previous">Previous</string>-->
+
+    <string name="button_go_to_tv_favorite">Go to Tv Favorite List</string>
+    <string name="button_go_to_movie_favorite">Go to Movie Favorite List</string>
 
 </resources>
